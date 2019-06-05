@@ -32,7 +32,21 @@
   padding: 20px 5px;
 }
 
+.product-card .product-card-title {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.product-card .product-card-price {
+  font-size: 1.8rem;
+}
+
 .product-card .product-card-preview img {
   width: 300px;
   height: auto;
+}
+
+/* Cart */
+.cart-item-card {
+  padding: 10px 0px;
 }

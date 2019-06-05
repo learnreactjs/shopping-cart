@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import Product from './pages/Product';
-import Cart from './pages/Cart';
+import Product from './pages/Product.js';
+import Cart from './pages/Cart.js';
 
 function App() {
 
@@ -22,14 +22,14 @@ function App() {
                   <Link className="sidebar-link" to="/">Product</Link>
                 </div>
                 <div className="sidebar-item">
-                  <Link className="sidebar-link" to="/cart">Cart</Link>
+                  <Link className="sidebar-link" to="/my-cart">My Cart</Link>
                 </div>
               </div>
             </nav>
           </div>
           <div className="content">
             <Route path="/" exact component={Product} />
-            <Route path="/cart" component={Cart} />
+            <Route path="/my-cart" component={Cart} />
           </div>
         </div>
       </Router>
