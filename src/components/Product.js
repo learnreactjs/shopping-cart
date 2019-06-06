@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Product ({product, handleAddToCart}) {
+function Product ({product, onClick}) {
 	let button; 
 		if(product.qty === 0 || !product.available) 
 			button = <button type="button" className="btn btn-outline-danger" disabled>Sold out</button>
 		else 
-			button = <button type="button" className="btn btn-primary" onClick={() => handleAddToCart(product.id)}>Add to cart</button>
+			button = <button type="button" className="btn btn-primary" onClick={onClick}>Add to cart</button>
 
 	return (
 		<div className="product-card row my-3 shadow">

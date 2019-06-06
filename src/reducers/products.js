@@ -44,7 +44,7 @@ const products = (state = initState, action) => {
 				if(state[productIndex].qty === 0) return state;
 				--state[productIndex].qty;
 				if(state[productIndex].qty === 0) state[productIndex].available = false;
-				return state;
+				return [...state];
 			}
 		default: 
 			return state;

@@ -16,7 +16,7 @@ function CartItemTotal({ cartItems, products }) {
 	}, 0);
 
 	return (
-		<div className="cart-item-card row my-1">
+		<div className="cart-item-card row my-1 text-danger">
 			<div className="cart-item cart-item-id col-2">
 				Total:
 			</div>
@@ -29,7 +29,7 @@ function CartItemTotal({ cartItems, products }) {
 			<div className="cart-item cart-item-qty col">
 				{totalQty}
 			</div>
-			<div className="cart-item cart-item-qty col text-danger">
+			<div className="cart-item cart-item-qty col">
 				${totalPrice}
 			</div>
 		</div>

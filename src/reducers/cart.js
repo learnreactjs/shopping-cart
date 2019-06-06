@@ -7,7 +7,10 @@ const cart = (state = [], action) => {
 			const itemIndex = state.findIndex(item => item.productId === payload.productId);
 
 			if(itemIndex === -1) return [...state, {...payload, id: ++nextId, date: new Date(), qty: 1 }];
-			else {++state[itemIndex].qty; return state};
+			else {
+				++state[itemIndex].qty; 
+				return state
+			};
 		default: 
 			return state; 
 	}
