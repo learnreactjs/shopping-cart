@@ -46,7 +46,16 @@
   height: auto;
 }
 
+/* Product list */
+/* Toast */
+.toast-header img {
+  width: 20px;
+  height: auto;
+}
+
 /* Cart */
 .cart-item-card {
   padding: 10px 0px;
 }
+
+
