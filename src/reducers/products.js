@@ -37,10 +37,9 @@ const initState = [
 		}
 	]
 
-const products = (state = initState, action) => {
-	switch (action.type) {
-		case 'DECREASE_PRODUCT_QTY': 
-			const { payload } = action;
+const products = (state = initState, { type, payload }) => {
+	switch (type) {
+		case 'DECREASE_PRODUCT_QTY': {
 			const productIndex = state.findIndex(product => product.id === payload.productId);
 
 			if(productIndex === -1) return state;
@@ -50,6 +49,15 @@ const products = (state = initState, action) => {
 				if(state[productIndex].qty === 0) state[productIndex].available = false;
 				return [...state];
 			}
+		}
+		case 'INCREASE_PRODUCT_QTY': {
+			const productIndex = state.findIndex(product => product.id === payload.productId);
+
+			if(productIndex === -1) return state;
+
+			state[productIndex].qty++;
+			return [...state];
+		}
 		default: 
 			return state;
 	}
