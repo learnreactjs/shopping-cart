@@ -10,7 +10,6 @@ const cart = (state = [], { type, payload }) => {
 				++state[itemIndex].qty; 
 				return state
 			}
-			break;
 		}
 		case 'REMOVE_PRODUCT_FROM_CART': {
 			let itemIndex = state.findIndex(item => item.id === payload.cartId);
@@ -27,7 +26,6 @@ const cart = (state = [], { type, payload }) => {
 				}
 				else return state;
 			}
-			break;
 		}
 		default: 
 			return state; 

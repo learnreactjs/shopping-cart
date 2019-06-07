@@ -1,25 +1,7 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { removeProductFromCart, increaseProductQty } from '../actions';
-import CartItem from '../components/CartItem';
+import CartItemList from '../components/CartItemList';
 
-function CartItemList({ cartItems , products, removeProductFromCart }) {
-	const productHash = {};
-	products.forEach(product => {
-		productHash[product.id] = product;
-	})
-
-	return cartItems.map((item, index) => {
-		return (
-			<CartItem 
-				key={index} 
-				cartItem={item} 
-				product={productHash[item.productId]} 
-				onClick={() => removeProductFromCart(item.id, item.productId)}
-			/>
-			)
-	})
-}
 
 const mapStateToProps = state => ({
 	cartItems: state.cart,
