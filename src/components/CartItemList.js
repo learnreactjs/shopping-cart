@@ -6,8 +6,7 @@ class CartItemList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			show: false,
-			productName: ""
+			toasts: []
 		}
 
 		this.handleRemove = this.handleRemove.bind(this);
@@ -23,9 +22,16 @@ class CartItemList extends Component {
 
 	handleRemove = (itemId, productId) => {
 		this.props.removeProductFromCart(itemId, productId);
-		this.setState({show: true, productName: this.productHash()[productId].name});
 
-		setTimeout(() => this.setState({show : false}), 1000);
+		const toasts = [...this.state.toasts];
+		const message = "Remove " + this.productHash()[productId].name + " from cart";
+		this.setState({toasts: [{ action: 'danger', message }, ...toasts]});
+
+		setTimeout(() => {
+			const newToasts = [...this.state.toasts];
+			newToasts.pop();
+			this.setState({toasts: newToasts});
+		}, 3000);
 	}
 
 	render() {
@@ -43,7 +49,7 @@ class CartItemList extends Component {
 		return (
 			<div>
 				{cartItemList}
-				<IToast action="danger" show={this.state.show} message={"Remove " + this.state.productName + " from Cart"} />
+				<IToast toasts={this.state.toasts} location="bottom"/>
 			</div>
 		)
 	}

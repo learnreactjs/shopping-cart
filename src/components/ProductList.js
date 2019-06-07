@@ -6,18 +6,23 @@ class ProductList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showToast: false,
-			productName: "",
+			toasts: [],
 		}
 		this.onClickAddToCart = this.onClickAddToCart.bind(this);
 	}
 
 	onClickAddToCart = (product) => {
 		this.props.addProductToCart(product.id);
-		this.setState({showToast: true});
-		this.setState({productName: product.name});
 
-		setTimeout(() => this.setState({showToast: false}), 1000);
+		const toasts = [...this.state.toasts];
+		const message = "Add " + product.name + " to cart";
+		this.setState({toasts: [ { action: "success", message },...toasts ]});
+
+		setTimeout(() => {
+			const newToast = [...this.state.toasts];
+			newToast.pop();
+			this.setState({toasts: newToast })
+		}, 3000);
 	}
 
 	render() {
@@ -28,7 +33,7 @@ class ProductList extends Component {
 		return (
 			<div aria-live="polite" aria-atomic="true">
 				{productList}
-				<IToast show={ this.state.showToast } message={"Add " + this.state.productName + " to Cart"} />
+				<IToast toasts={this.state.toasts} />
 			</div>
 		)
 	}

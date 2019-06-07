@@ -56,6 +56,7 @@ const products = (state = initState, { type, payload }) => {
 			if(productIndex === -1) return state;
 
 			state[productIndex].qty++;
+			state[productIndex].available = true;
 			return [...state];
 		}
 		default: 
