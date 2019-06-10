@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CartItem ({ cartItem , product, className}) {
+function CartItem ({ cartItem , product, className, onClick}) {
 	return (
 		<div className={"cart-item-card row my-1 shadow-sm " + className}>
 			<div className="cart-item cart-item-id col-2">
@@ -17,6 +17,9 @@ function CartItem ({ cartItem , product, className}) {
 			</div>
 			<div className="cart-item cart-item-date col">
 				{cartItem.date instanceof Date ? cartItem.date.toDateString(): cartItem.date}
+			</div>
+			<div className="cart-item cart-item-button col-1">
+				<button type="button" className="btn btn-sm btn-danger" onClick={onClick}>Remove</button>
 			</div>
 		</div>
 	);

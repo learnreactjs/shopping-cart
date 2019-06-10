@@ -1,9 +1,8 @@
-const products = (state = [], action) => {
-	switch (action.type) {
-		case 'FETCH_PRODUCTS': 
-			return action.payload.products;
-		case 'DECREASE_PRODUCT_QTY': 
-			const { payload } = action;
+const products = (state = [], { type, payload }) => {
+	switch (type) {
+    case 'FETCH_PRODUCTS': 
+			return payload.products;
+		case 'DECREASE_PRODUCT_QTY': {
 			const productIndex = state.findIndex(product => product.id === payload.productId);
 
 			if(productIndex === -1) return state;
@@ -13,6 +12,16 @@ const products = (state = [], action) => {
 				if(state[productIndex].qty === 0) state[productIndex].available = false;
 				return [...state];
 			}
+		}
+		case 'INCREASE_PRODUCT_QTY': {
+			const productIndex = state.findIndex(product => product.id === payload.productId);
+
+			if(productIndex === -1) return state;
+
+			state[productIndex].qty++;
+			state[productIndex].available = true;
+			return [...state];
+		}
 		default: 
 			return state;
 	}
