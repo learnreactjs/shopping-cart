@@ -1,8 +1,11 @@
-const products = (state = [], { type, payload }) => {
-	switch (type) {
-    case 'FETCH_PRODUCTS': 
-			return payload.products;
-		case 'DECREASE_PRODUCT_QTY': {
+import { FETCH_PRODUCTS, DECREASE_PRODUCT_QTY, INCREASE_PRODUCT_QTY } from '../constants/actionTypes';
+
+function products(state = [], { type, payload }) {
+	switch(type) {
+    case FETCH_PRODUCTS:{
+      return payload.products;
+    }
+		case DECREASE_PRODUCT_QTY: {
 			const productIndex = state.findIndex(product => product.id === payload.productId);
 
 			if(productIndex === -1) return state;
@@ -13,7 +16,7 @@ const products = (state = [], { type, payload }) => {
 				return [...state];
 			}
 		}
-		case 'INCREASE_PRODUCT_QTY': {
+		case INCREASE_PRODUCT_QTY: {
 			const productIndex = state.findIndex(product => product.id === payload.productId);
 
 			if(productIndex === -1) return state;

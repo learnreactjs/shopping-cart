@@ -1,23 +1,22 @@
 import axios from 'axios';
-
-axios.defaults.headers['content-type'] = 'application/json';
+import { FETCH_PRODUCTS, ADD_PRODUCT_TO_CART, DECREASE_PRODUCT_QTY, REMOVE_PRODUCT_FROM_CART, INCREASE_PRODUCT_QTY } from '../constants/actionTypes';
 
 export const fetchAllProducts = () => {
 	return dispatch => {
-		return axios.get("/data/products.json", {responseType: 'application/json'})
+		return axios.get("/data/products.json", { responseType: 'application/json' })
 			.then(response => {
-				console.log({data: response.data, headers: response.headers})
+				console.log({ data: response.data, headers: response.headers })
 				dispatch(fetchProducts(response.data));
 			})
 			.catch(error => {
-				throw(error);
+				throw (error);
 			})
 	}
 }
 
 export const fetchProducts = (products) => {
 	return {
-		type: 'FETCH_PRODUCTS',
+		type: FETCH_PRODUCTS,
 		payload: {
 			products
 		}
@@ -25,28 +24,28 @@ export const fetchProducts = (products) => {
 }
 
 export const addProductToCart = productId => ({
-	type: 'ADD_PRODUCT_TO_CART',
+	type: ADD_PRODUCT_TO_CART,
 	payload: {
 		productId
 	}
 })
 
 export const decreaseProductQty = productId => ({
-	type: 'DECREASE_PRODUCT_QTY',
+	type: DECREASE_PRODUCT_QTY,
 	payload: {
 		productId
 	}
 })
 
 export const removeProductFromCart = cartId => ({
-	type: 'REMOVE_PRODUCT_FROM_CART',
+	type: REMOVE_PRODUCT_FROM_CART,
 	payload: {
 		cartId
 	}
 })
 
 export const increaseProductQty = productId => ({
-	type: 'INCREASE_PRODUCT_QTY',
+	type: INCREASE_PRODUCT_QTY,
 	payload: {
 		productId
 	}
