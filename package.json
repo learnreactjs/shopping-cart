@@ -8,6 +8,8 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
+    "react-dnd": "^7.6.0",
+    "react-dnd-html5-backend": "^7.6.0",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",

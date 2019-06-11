@@ -28,7 +28,7 @@ class ProductList extends Component {
 
 	render() {
 		const productList = this.props.products.map((product, index) => {
-			return <Product key={product.id} product={product} index={index} onClick={() => this.onClickAddToCart(product) }/>
+			return <Product key={product.id} product={product} index={index} onClick={this.onClickAddToCart }/>
 		})
 
 		return (

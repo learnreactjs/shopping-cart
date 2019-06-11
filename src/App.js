@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { DragDropContextProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import './App.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -10,6 +12,7 @@ import Cart from './pages/Cart.js';
 function App() {
 
   return (
+      <DragDropContextProvider backend={HTML5Backend}>
        <Router>
         <div>
           <div className="sidebar bg-dark">
@@ -34,6 +37,7 @@ function App() {
           </div>
         </div>
       </Router>
+    </DragDropContextProvider>
   );
 }
 

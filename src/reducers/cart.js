@@ -1,4 +1,5 @@
-import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART } from '../constants/actionTypes';
+import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, SORT } from '../constants/actionTypes';
+import { move } from './functions';
 
 let nextId = 0;
 
@@ -28,6 +29,11 @@ const cart = (state = [], { type, payload }) => {
 				}
 				else return state;
 			}
+		}
+		case SORT: {
+			const { oldIndex, newIndex } = payload;
+			console.log({ oldIndex, newIndex })
+			return move(state, oldIndex, newIndex);
 		}
 		default:
 			return state;

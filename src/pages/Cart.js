@@ -1,6 +1,7 @@
 import React from 'react';
-import CartItemList from '../containers/CartItemList';
+// import CartItemList from '../containers/CartItemList';
 import CartItemTotal from '../containers/CartItemTotal';
+import DndCartItemContainer from '../containers/DndCartItemContainer';
 
 function Cart() {
 
@@ -25,7 +26,8 @@ function Cart() {
 				<div className="cart-item cart-item-button col-1">
 				</div>
 			</div>
-			<CartItemList />
+			{/* <CartItemList /> */}
+			<DndCartItemContainer />
 			<hr />
 			<CartItemTotal />
 		</div>
