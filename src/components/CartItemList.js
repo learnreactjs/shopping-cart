@@ -8,7 +8,7 @@ class CartItemList extends Component {
 		this.state = {
 			toasts: []
 		}
-
+		this.timeouts = [];
 		this.handleRemove = this.handleRemove.bind(this);
 	}
 
@@ -27,11 +27,17 @@ class CartItemList extends Component {
 		const message = "Remove " + this.productHash()[productId].name + " from cart";
 		this.setState({toasts: [{ action: 'danger', message }, ...toasts]});
 
-		setTimeout(() => {
+		const timeout = setTimeout(() => {
 			const newToasts = [...this.state.toasts];
 			newToasts.pop();
 			this.setState({toasts: newToasts});
 		}, 3000);
+		this.timeouts.push(timeout);
+	}
+
+	componentWillUnmount() {
+		this.timeouts.forEach(timeout => clearTimeout(timeout));
+		this.timeouts = [];
 	}
 
 	render() {

@@ -19,7 +19,7 @@ function IToast({ toasts, location }) {
 				role="alert" 
 				aria-live="assertive" 
 				aria-atomic="true" 
-				data-autohide="false" 
+				data-autohide="true" 
 				data-delay="10000"
 				style={{minWidth: '300px', opacity: 1 }}
 				>

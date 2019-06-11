@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { sortableContainer } from 'react-sortable-hoc';
 import IToast from './IToast';
 import Product from './Product';
 
@@ -26,8 +27,8 @@ class ProductList extends Component {
 	}
 
 	render() {
-		const productList = this.props.products.map(product => {
-			return <Product key={product.id} product={product} onClick={() => this.onClickAddToCart(product) }/>
+		const productList = this.props.products.map((product, index) => {
+			return <Product key={product.id} product={product} index={index} onClick={() => this.onClickAddToCart(product) }/>
 		})
 
 		return (
@@ -39,4 +40,4 @@ class ProductList extends Component {
 	}
 }
 
-export default ProductList;
+export default sortableContainer(ProductList);

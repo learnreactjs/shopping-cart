@@ -1,11 +1,10 @@
 import axios from 'axios';
-import { FETCH_PRODUCTS, ADD_PRODUCT_TO_CART, DECREASE_PRODUCT_QTY, REMOVE_PRODUCT_FROM_CART, INCREASE_PRODUCT_QTY } from '../constants/actionTypes';
+import { FETCH_PRODUCTS, ADD_PRODUCT_TO_CART, DECREASE_PRODUCT_QTY, REMOVE_PRODUCT_FROM_CART, INCREASE_PRODUCT_QTY, SORT } from '../constants/actionTypes';
 
 export const fetchAllProducts = () => {
 	return dispatch => {
-		return axios.get("/data/products.json", { responseType: 'application/json' })
+		return axios.get("/data/products.json")
 			.then(response => {
-				console.log({ data: response.data, headers: response.headers })
 				dispatch(fetchProducts(response.data));
 			})
 			.catch(error => {
@@ -48,5 +47,13 @@ export const increaseProductQty = productId => ({
 	type: INCREASE_PRODUCT_QTY,
 	payload: {
 		productId
+	}
+})
+
+export const sort = ({ oldIndex, newIndex }) => ({
+	type: SORT,
+	payload: {
+		oldIndex,
+		newIndex
 	}
 })

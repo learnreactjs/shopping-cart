@@ -1,10 +1,22 @@
-import { FETCH_PRODUCTS, DECREASE_PRODUCT_QTY, INCREASE_PRODUCT_QTY } from '../constants/actionTypes';
+import { FETCH_PRODUCTS, DECREASE_PRODUCT_QTY, INCREASE_PRODUCT_QTY, SORT } from '../constants/actionTypes'
+
+function move( items, oldIndex, newIndex) {
+  const item = items[oldIndex];
+  items.splice(oldIndex, 1);
+  items.splice(newIndex, 0, item);
+  
+  return [...items];
+}
 
 function products(state = [], { type, payload }) {
 	switch(type) {
     case FETCH_PRODUCTS:{
       return payload.products;
-    }
+		}
+		case SORT: {
+			const { oldIndex, newIndex } = payload;
+			return move(state, oldIndex, newIndex);
+		}
 		case DECREASE_PRODUCT_QTY: {
 			const productIndex = state.findIndex(product => product.id === payload.productId);
 
