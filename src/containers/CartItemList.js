@@ -9,9 +9,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	onClickRemove: (cartId, productId) => {
-		dispatch(removeProductFromCart(cartId));
-		dispatch(increaseProductQty(productId));
+	onClickRemove: (cartId, productId, qty) => {
+		dispatch(removeProductFromCart(cartId, qty));
+		dispatch(increaseProductQty(productId, qty));
 	},
 	moveItem: ({dragIndex, hoverIndex}) => dispatch(moveItem({dragIndex, hoverIndex}))
 })

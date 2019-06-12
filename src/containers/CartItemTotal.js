@@ -17,7 +17,7 @@ function CartItemTotal({ cartItems, products }) {
 
 	return (
 		<div className="cart-item-card row my-1 text-danger">
-			<div className="cart-item cart-item-id col-2">
+			<div className="cart-item cart-item-id col-1">
 				Total:
 			</div>
 			<div className="cart-item cart-item-id col-2">

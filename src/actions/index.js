@@ -36,17 +36,19 @@ export const decreaseProductQty = productId => ({
 	}
 })
 
-export const removeProductFromCart = cartId => ({
+export const removeProductFromCart = (cartItemId, qty) => ({
 	type: REMOVE_PRODUCT_FROM_CART,
 	payload: {
-		cartId
+		cartItemId,
+		qty
 	}
 })
 
-export const increaseProductQty = productId => ({
+export const increaseProductQty = (productId, qty) => ({
 	type: INCREASE_PRODUCT_QTY,
 	payload: {
-		productId
+		productId,
+		qty
 	}
 })
 

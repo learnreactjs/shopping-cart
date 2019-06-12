@@ -21,11 +21,11 @@ class SortableCartItemList  extends Component {
     return hash;
   }
 
-  handleRemove = (itemId, productId) => {
-		this.props.onClickRemove(itemId, productId);
+  handleRemove = (itemId, productId, qty) => {
+		this.props.onClickRemove(itemId, productId, qty);
 
 		const toasts = [...this.state.toasts];
-		const message = "Remove " + this.productHash()[productId].name + " from cart";
+		const message = "Remove " + qty + " " + this.productHash()[productId].name + " from cart";
 		this.setState({toasts: [ ...toasts, { action: 'danger', message }]});
 
 		const timeout = setTimeout(() => {
@@ -34,7 +34,7 @@ class SortableCartItemList  extends Component {
 			this.setState({toasts: newToasts});
 		}, 3000);
 		this.timeouts.push(timeout);
-	}
+  }
 
 	componentWillUnmount() {
 		this.timeouts.forEach(timeout => clearTimeout(timeout));
@@ -51,18 +51,37 @@ class SortableCartItemList  extends Component {
           item={item}
           product={this.productHash()[item.productId]}
           moveItem={moveItem}
-          onClickRemove={() => this.handleRemove(item.id, item.productId)}
+          onClickRemove={(qty) => this.handleRemove(item.id, item.productId, qty)}
         />
       )
-  }
-  return (
-    <>
-      <div>
-        {items.map((item, i) => renderItem(item, i))}
-        <IToast toasts={this.state.toasts} location="bottom"/>
-      </div>
-    </>
-  )
+    }
+    return (
+      <>
+        <div>
+          <div className={"cart-item-card row my-1 shadow-sm bg-light"}>
+            <div className="cart-item cart-item-id col-1">
+              <strong>ID</strong>
+            </div>
+            <div className="cart-item cart-item-product-name col-2">
+              Name
+            </div>
+            <div className="cart-item cart-item-product-price col-2">
+              Price ($)
+            </div>
+            <div className="cart-item cart-item-qty col">
+              Quantity
+            </div>
+            <div className="cart-item cart-item-date col">
+              Date
+            </div>
+            <div className="cart-item cart-item-button col">
+            </div>
+          </div>
+          {items.map((item, i) => renderItem(item, i))}
+          <IToast toasts={this.state.toasts} location="bottom"/>
+        </div>
+      </>
+    )
   }
 }
 

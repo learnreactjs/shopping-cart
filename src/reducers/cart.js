@@ -1,9 +1,17 @@
 import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART, MOVE_ITEM } from '../constants/actionTypes';
 import { move } from './functions';
 
-let nextId = 0;
+let nextId = 2;
+const initState = [
+	{
+		id: 1,
+		date: new Date(),
+		qty: 5,
+		productId: 5
+	}
+]
 
-const cart = (state = [], { type, payload }) => {
+const cart = (state = initState, { type, payload }) => {
 	switch (type) {
 		case ADD_PRODUCT_TO_CART: {
 			let itemIndex = state.findIndex(item => item.productId === payload.productId);
@@ -15,20 +23,19 @@ const cart = (state = [], { type, payload }) => {
 			}
 		}
 		case REMOVE_PRODUCT_FROM_CART: {
-			let itemIndex = state.findIndex(item => item.id === payload.cartId);
+			const { cartItemId, qty } = payload;
+			let itemIndex = state.findIndex(item => item.id === cartItemId);
 
 			if (itemIndex === -1) return state;
-			else {
-				if (state[itemIndex].qty === 1) {
-					state.splice(itemIndex, 1);
-					return [...state];
-				}
-				else if (state[itemIndex].qty > 1) {
-					state[itemIndex].qty--;
-					return [...state];
-				}
-				else return state;
+			if (state[itemIndex].qty <= qty) {
+				state.splice(itemIndex, 1);
+				return [...state];
 			}
+			else if (state[itemIndex].qty > qty) {
+				state[itemIndex].qty = state[itemIndex].qty - qty;
+				return [...state];
+			}
+			else return state;
 		}
 		case MOVE_ITEM: {
 			const { dragIndex, hoverIndex } = payload;

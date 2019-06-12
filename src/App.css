@@ -16,6 +16,10 @@
   background-color: black;
 }
 
+.sidebar-list .sidebar-item .active {
+  background-color: black;
+}
+
 .sidebar-list .sidebar-link {
     display: block;
     padding: 0.5rem 1rem;
@@ -42,7 +46,7 @@
 }
 
 .product-card .product-card-preview img {
-  width: 200px;
+  width: 220px;
   height: auto;
 }
 
@@ -57,5 +61,7 @@
 .cart-item-card {
   padding: 10px 0px;
 }
-
+.cart-item {
+  padding-top: 0.25rem;
+}
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import './App.css';
@@ -22,17 +22,18 @@ function App() {
             </div>
             <nav>
               <div className="sidebar-list">
-                <div className="sidebar-item active">
-                  <Link className="sidebar-link" to="/">Product</Link>
+                <div className="sidebar-item">
+                  <NavLink className="sidebar-link" activeClassName="active" to="/product">Product</NavLink>
                 </div>
                 <div className="sidebar-item">
-                  <Link className="sidebar-link" to="/my-cart">My Cart</Link>
+                  <NavLink className="sidebar-link" activeClassName="active" to="/my-cart">My Cart</NavLink>
                 </div>
               </div>
             </nav>
           </div>
           <div className="content">
             <Route path="/" exact component={Product} />
+            <Route path="/product" component={Product} />
             <Route path="/my-cart" component={Cart} />
           </div>
         </div>
