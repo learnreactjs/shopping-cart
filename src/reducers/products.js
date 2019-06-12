@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, DECREASE_PRODUCT_QTY, INCREASE_PRODUCT_QTY, SORT } from '../constants/actionTypes'
+import { FETCH_PRODUCTS, DECREASE_PRODUCT_QTY, INCREASE_PRODUCT_QTY, SORT_PRODUCT } from '../constants/actionTypes'
 import { move } from './functions';
 
 function products(state = [], { type, payload }) {
@@ -6,7 +6,7 @@ function products(state = [], { type, payload }) {
     case FETCH_PRODUCTS:{
       return payload.products;
 		}
-		case SORT: {
+		case SORT_PRODUCT: {
 				const { oldIndex, newIndex } = payload;
 				return move(state, oldIndex, newIndex);
 		}

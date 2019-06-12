@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
-import { removeProductFromCart, increaseProductQty } from '../actions';
-import CartItemList from '../components/CartItemList';
+import { removeProductFromCart, increaseProductQty, moveItem } from '../actions';
+import SortableCartItemList from '../components/SortableCartItemList';
 
 
 const mapStateToProps = state => ({
-	cartItems: state.cart,
+	items: state.cart,
 	products: state.products
 })
 
 const mapDispatchToProps = dispatch => ({
-	removeProductFromCart: (cartId, productId) => {
+	onClickRemove: (cartId, productId) => {
 		dispatch(removeProductFromCart(cartId));
 		dispatch(increaseProductQty(productId));
-	}
+	},
+	moveItem: ({dragIndex, hoverIndex}) => dispatch(moveItem({dragIndex, hoverIndex}))
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartItemList);
+export default connect(mapStateToProps, mapDispatchToProps)(SortableCartItemList);
