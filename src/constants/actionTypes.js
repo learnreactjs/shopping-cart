@@ -5,3 +5,9 @@ export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
 export const INCREASE_PRODUCT_QTY = 'INCREASE_PRODUCT_QTY';
 export const SORT_PRODUCT = 'SORT_PRODUCT';
 export const MOVE_ITEM = 'MOVE_ITEM';
+export const SET_FILTER = 'SET_FILTER';
+export const Filters = {
+  ALL: 'ALL',
+  AVAILABLE: 'AVAILABLE',
+  SOLDOUT: 'SOLDOUT'
+}

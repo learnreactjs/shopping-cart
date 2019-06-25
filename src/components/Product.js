@@ -12,10 +12,10 @@ class Product extends Component {
 
 		return (
 			<div className="product-card row my-3 shadow">
-				<div className="product-card-preview col-4">
+				<div className="product-card-preview col-lg-4">
 					<img className="shadow-sm" src={product.image?product.image: "https://topekacivictheatre.com/wp-content/uploads/2019/01/no-image.jpg"} alt={"Product Image" + product.id}/>
 				</div>
-				<div className="product-card-content col">
+				<div className="product-card-content col-lg">
 					<p className="product-card-title">{product.name}</p>
 					<div className="pb-2">
 						<p className="product-card-price d-inline">${product.price}</p>

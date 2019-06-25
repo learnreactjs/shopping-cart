@@ -3,9 +3,9 @@
   text-align: center;
   padding-top: 20px;
   height: 100vh;
-  width: 250px;
+  width: 18vw;
   position: fixed;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .sidebar .app-name {
@@ -27,7 +27,7 @@
 
 /* CONTENT */
 .content {
-  margin-left: 250px; 
+  margin-left: 18vw; 
   padding: 20px 50px;
 }
 
@@ -51,6 +51,13 @@
 }
 
 /* Product list */
+/* Filter Tab */
+.filter-tab-list li a {
+  text-decoration: none;
+}
+.filter-tab-list li {
+  border-bottom: 2px solid #dee2e6;
+}
 /* Toast */
 .toast-header img {
   width: 20px;
@@ -64,4 +71,25 @@
 .cart-item {
   padding-top: 0.25rem;
 }
+.cart-item-input {
+  width: 25% !important;
+}
 
+@media (max-width: 532.98px) { 
+  .cart-item-input {
+    width: 50% !important;
+  }
+}
+
+
+@media (max-width: 767.98px) { 
+
+}
+
+@media (min-width: 533px) and (max-width: 991.98px) { 
+  .cart-item-input {
+    width: 75% !important;
+  }
+ }
+
+@media (max-width: 1199.98px) {  }

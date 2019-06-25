@@ -38,7 +38,7 @@ function CartItemTotal({ cartItems, products }) {
 
 const mapStateToProps = state => ({
 	cartItems: state.cart,
-	products: state.products
+	products: state.product.items
 })
 
 export default connect(mapStateToProps)(CartItemTotal);

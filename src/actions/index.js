@@ -1,5 +1,13 @@
 import axios from 'axios';
-import { FETCH_PRODUCTS, ADD_PRODUCT_TO_CART, DECREASE_PRODUCT_QTY, REMOVE_PRODUCT_FROM_CART, INCREASE_PRODUCT_QTY, MOVE_ITEM, SORT_PRODUCT } from '../constants/actionTypes';
+import { 
+	FETCH_PRODUCTS, 
+	ADD_PRODUCT_TO_CART, 
+	DECREASE_PRODUCT_QTY, 
+	REMOVE_PRODUCT_FROM_CART, 
+	INCREASE_PRODUCT_QTY, 
+	MOVE_ITEM, SORT_PRODUCT, 
+	SET_FILTER,
+	Filters } from '../constants/actionTypes';
 
 export const fetchAllProducts = () => {
 	return dispatch => {
@@ -67,3 +75,12 @@ export const moveItem = ({dragIndex, hoverIndex}) => ({
 		hoverIndex
 	}
 })
+
+export const setFilter = filter => ({
+  type: SET_FILTER,
+  payload: {
+		filter
+	}
+})
+
+export const productFilters = Filters;

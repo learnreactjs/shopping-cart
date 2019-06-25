@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { sortableContainer } from 'react-sortable-hoc';
 import IToast from './IToast';
 import Product from './Product';
+import FilterTab from './FilterTab';
 
 class ProductList extends Component {
 	constructor(props) {
@@ -33,6 +34,7 @@ class ProductList extends Component {
 
 		return (
 			<div aria-live="polite" aria-atomic="true">
+				<FilterTab setFilter={this.props.setFilter}/>
 				{productList}
 				<IToast toasts={this.state.toasts} />
 			</div>

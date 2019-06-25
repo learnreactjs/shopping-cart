@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import Product from './Product';
 import IToast from './IToast';
+import FilterTab from './ProductFilterTab';
  
 const SortableItem = SortableElement(({value, onClick}) => <Product product={value} onClick={onClick}/>);
  
@@ -48,6 +49,7 @@ class SortableComponent extends Component {
   render() {
     return (
 			<div>
+				<FilterTab setFilter={this.props.setFilter} />
 				<SortableList items={this.props.products} onSortEnd={this.props.onSortEnd} onClickAddToCart={this.onClickAddToCart}/>
 				<IToast toasts={this.state.toasts} />
 			</div>

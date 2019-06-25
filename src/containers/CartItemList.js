@@ -5,7 +5,7 @@ import SortableCartItemList from '../components/SortableCartItemList';
 
 const mapStateToProps = state => ({
 	items: state.cart,
-	products: state.products
+	products: state.product.items
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -74,40 +74,43 @@ class Item extends Component {
       connectDropTarget
      } = this.props;
      const opacity = isDragging ? 0 : 1;
-  return connectDragSource(
-    connectDropTarget(
-    <div style={Object.assign({}, { opacity })} className="cart-item-card row my-1 shadow-sm ">
-      <div className="cart-item cart-item-id col-1">
-        <strong>{item.id}</strong>
-      </div>
-      <div className="cart-item cart-item-product-name col-2">
-        {product.name}
-      </div>
-      <div className="cart-item cart-item-product-price col-2">
-        {product.price}
-      </div>
-      <div className="cart-item cart-item-qty col">
-        {item.qty}
-      </div>
-      <div className="cart-item cart-item-date col">
-        {item.date instanceof Date ? item.date.toDateString(): item.date}
-      </div>
-      <form className="form-inline col">
-        <input 
-          className="form-control form-control-sm mr-sm-2 w-25" 
-          type="text" 
-          value={this.state.qty} 
-          placeholder="1"
-          onChange={this.handleChange} aria-label="Remove"/>
-        <button 
-          className="btn btn-sm btn-outline-danger my-2 my-sm-0" 
-          type="button" 
-          onClick={this.handleClickRemove}
-        >Remove</button>
-      </form>
-    </div>
+    return connectDragSource(
+      connectDropTarget(
+        <div style={Object.assign({}, { opacity })} className="cart-item-card row my-1 shadow-sm ">
+          <div className="cart-item cart-item-id col-1">
+            <strong>{item.id}</strong>
+          </div>
+          <div className="cart-item cart-item-product-name col-2">
+            {product.name}
+          </div>
+          <div className="cart-item cart-item-product-price col-2">
+            {product.price}
+          </div>
+          <div className="cart-item cart-item-qty col">
+            {item.qty}
+          </div>
+          <div className="cart-item cart-item-date col">
+            {item.date instanceof Date ? item.date.toDateString(): item.date}
+          </div>
+          <form className="form-inline col" onSubmit={(e) => e.preventDefault()}>
+            <input 
+              className="form-control form-control-sm mr-1 cart-item-input" 
+              type="text" 
+              value={this.state.qty} 
+              placeholder="1"
+              onChange={this.handleChange} 
+              aria-label="Remove"
+              
+              />
+            <button 
+              className="btn btn-sm btn-outline-danger my-2 my-sm-0" 
+              type="button" 
+              onClick={this.handleClickRemove}
+            >Remove</button>
+          </form>
+        </div>
+      )
     )
-  )
   }
 }
 
